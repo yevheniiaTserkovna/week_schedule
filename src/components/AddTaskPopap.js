@@ -17,7 +17,7 @@ function AddTaskPopap() {
   return (
     <div className={classes} onClick={closePopapHandler}>
       <div className='popap-body'>
-        <div className='popap-content'>Add task!!!</div>
+        <div className='popap-content'>ADD TASK + </div>
       </div>
     </div>
   );
