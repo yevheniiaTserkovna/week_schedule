@@ -1,38 +1,224 @@
+html {
+  min-height: 100%;
+  background-color: #83eaf1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .App {
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.background-red {
+  background-color: red;
+}
+
+.background-orange {
+  background-color: orange;
+}
+
+.background-yellow {
+  background-color: yellow;
+}
+
+.background-green {
+  background-color: #0da10d;
+}
+
+.background-blue {
+  background-color: #0975f1c5;
+}
+
+/* -------------Header component start----------- */
+.app-header {
+  display: flex;
+  align-items: center;
+}
+
+.app-header > div {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.header-card {
+  font-size: 30px;
+  padding: 2px;
+  border: 2px solid white;
+  border-radius: 18px;
+  margin-top: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-transform: uppercase;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-card > div {
+  border-radius: 15px;
+  padding: 15px 25px;
+  background: white;
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.app-header-user .header-card {
+  font-size: 40px;
+  transform: rotate(5deg);
+}
+
+.app-header-title .header-card {
+  transform: rotate(-5deg);
+}
+
+@media (max-width: 450px) {
+  .header-card,
+  .app-header-user .header-card {
+    font-size: 18px;
+  }
+
+  .app-header > div {
+    margin: 0 5px;
+  }
+}
+/* -------------Header component end----------- */
+
+/* -------------Week component start----------- */
+.week {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 15px 0;
+}
+
+@media (max-width: 450px) {
+  .week {
+    display: block;
+    padding: 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* -------------Week component end----------- */
+
+/* -------------Day component start----------- */
+.week-day {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 20%;
+  margin: 0 5px;
+  border-radius: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 15px;
+  min-height: 50px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.week-day.week-day-active {
+  margin: -15px 5px;
+}
+
+.week-day .week-day-active .week-day-title {
+  opacity: 1;
+}
+
+.week-day-title {
+  background: white;
+  padding: 5px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  opacity: 75%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.add-task-button {
+}
+
+@media (max-width: 450px) {
+  .week-day {
+    margin-top: 30px;
+  }
+}
+/* -------------Day component end----------- */
+
+/* -------------Task component start----------- */
+.week-day-task {
+  border: 2px solid white;
+  border-radius: 9px;
+  margin: 20px 0;
+  padding: 2px;
+  font-size: 13px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.week-day:nth-child(odd) .week-day-task:nth-child(odd) {
+  transform: rotate(1deg);
+}
+
+.week-day:nth-child(odd) .week-day-task:nth-child(even) {
+  transform: rotate(-1deg);
+}
+
+.week-day:nth-child(even) .week-day-task:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.week-day:nth-child(even) .week-day-task:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.week-day-task-content {
+  background: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.week-day-task-image {
+  height: 30px;
+  background: aquamarine;
+  margin: 5px 0;
+}
+/* -------------Task component end----------- */
+
+/* -------------AddTaskPopap component start----------- */
+.popap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s ease 0s;
+}
+
+.popap-body {
+  min-height: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 30px 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.popap-content {
+  background-color: aquamarine;
+  color: black;
+  padding: 15px;
+  max-width: 600px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 9px;
+  opacity: 0;
+  transform: translate(0, -1000%);
+  transition: all 0.8s ease 0s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.popap-visible {
+  opacity: 1;
+  visibility: visible;
 }
+
+.popap-visible .popap-content {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+/* -------------AddTaskPopap component end----------- */
