@@ -13,21 +13,36 @@ html {
 .background-red {
   background-color: red;
 }
+.background-red svg {
+  fill: red;
+}
 
 .background-orange {
   background-color: orange;
+}
+.background-orange svg {
+  fill: orange;
 }
 
 .background-yellow {
   background-color: yellow;
 }
+.background-yellow svg {
+  fill: yellow;
+}
 
 .background-green {
   background-color: #0da10d;
 }
+.background-green svg {
+  fill: #0da10d;
+}
 
 .background-blue {
   background-color: #0975f1c5;
+}
+.background-blue svg {
+  fill: #0975f1c5;
 }
 
 /* -------------Header component start----------- */
@@ -131,11 +146,31 @@ html {
 }
 
 .add-task-button {
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  margin: 10px 0;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 80%;
+  align-self: center;
+  text-transform: uppercase;
+  background-color: white;
+  opacity: 60%;
+}
+
+.add-task-button:hover {
+  opacity: 100%;
 }
 
 @media (max-width: 450px) {
-  .week-day {
-    margin-top: 30px;
+  .week-day.week-day {
+    margin: 30px 0 0 0;
+  }
+
+  .add-task-button {
+    font-size: 18px;
   }
 }
 /* -------------Day component end----------- */
@@ -167,16 +202,50 @@ html {
 }
 
 .week-day-task-content {
+  position: relative;
   background: white;
   border-radius: 5px;
   padding: 5px;
 }
 
 .week-day-task-image {
-  height: 30px;
-  background: aquamarine;
-  margin: 5px 0;
+  width: 100px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
 }
+
+.week-day-task-image img {
+  width: 102%;
+  margin: -1%;
+}
+
+.delButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.week-day-task-content:hover .delButton {
+  display: block;
+}
+
+@media (max-width: 450px) {
+  .week-day-task {
+    width: 70%;
+    margin: 20px auto;
+  }
+
+  .week-day-task-image {
+    width: 150px;
+  }
+}
+
 /* -------------Task component end----------- */
 
 /* -------------AddTaskPopap component start----------- */
@@ -198,18 +267,47 @@ html {
   align-items: center;
   justify-content: center;
   padding: 30px 10px;
+  margin-top: -50px;
 }
 
 .popap-content {
-  background-color: aquamarine;
+  background-color: #83eaf1;
   color: black;
   padding: 15px;
   max-width: 600px;
+  min-width: 250px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 9px;
   opacity: 0;
   transform: translate(0, -1000%);
   transition: all 0.8s ease 0s;
+  text-align: center;
+}
+
+.popap-content h2 {
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+.popap-content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.popap-content input {
+  padding: 7px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: grey 1px solid;
+}
+
+.popap-select-time-conteiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
 }
 
 .popap-visible {
@@ -221,4 +319,80 @@ html {
   opacity: 1;
   transform: translate(0, 0);
 }
+
+.submit-task-button {
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  margin: 10px 0;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 80%;
+  align-self: center;
+  text-transform: uppercase;
+  background: white;
+  opacity: 60%;
+}
+
+.submit-task-button:hover {
+  opacity: 100%;
+}
 /* -------------AddTaskPopap component end----------- */
+
+/* -------------Carousel component start----------- */
+.carousel-wrapper {
+  position: relative;
+  margin: 20px 0;
+}
+
+.carousel-conteiner {
+  overflow: hidden;
+  width: 220px;
+}
+
+.carousel-items {
+  display: flex;
+  align-items: center;
+  width: 9999px;
+  transition: all 0.8s ease 0s;
+}
+
+.carousel-svg {
+  margin: 0 5px;
+  width: 240px;
+  height: 80px;
+}
+
+.carousel-items svg {
+  width: 115px;
+  height: 80px;
+}
+
+.carouser-arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  margin-top: -35px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.carouser-arrow.carouser-arrow-disabled {
+  color: lightgray;
+}
+
+.carouser-arrow-left {
+  left: 0;
+}
+
+.carouser-arrow-right {
+  right: 0;
+}
+
+.carouser-arrow svg {
+  width: 50px;
+}
+
+/* -------------Carousel component end----------- */
