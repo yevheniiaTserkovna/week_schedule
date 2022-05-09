@@ -62,7 +62,6 @@ function AddTaskPopap() {
             ></input>
             <Carousel taskImgToAddRef={taskImgToAddRef} />
             <div className='popap-select-time-conteiner'>
-              {/* <label htmlFor='taskTime'>Choose a time:</label> */}
               <input
                 type='time'
                 id='taskTime'

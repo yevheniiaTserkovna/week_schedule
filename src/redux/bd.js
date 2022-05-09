@@ -52,8 +52,6 @@ export async function delData(selectedDay, id) {
 
 export async function test() {
   const citiesRef = collection(db, 'Nikita', 'week', '5');
-
-  // Create a query against the collection.
   const q = query(citiesRef, orderBy('time'));
   const dataSnapshot = await getDocs(q);
 

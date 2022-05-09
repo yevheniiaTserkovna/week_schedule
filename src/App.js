@@ -12,11 +12,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className='container pt-3'>
-        {/* <Navbar /> */}
+        {/* <Navbar /> Навигацию сделать позже */}
         {user ? (
           <Routes>
             <Route path={'/'} exact element={<MainPage />} />
-            {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
+            <Route path='*' element={<Navigate to='/' replace />} />
           </Routes>
         ) : (
           <Routes>

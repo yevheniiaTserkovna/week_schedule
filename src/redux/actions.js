@@ -60,8 +60,6 @@ export function addEvent(selectedDay, event) {
   return (dispatch) => {
     try {
       addData(selectedDay, { ...event }).then((id) => {
-        //const payload = { item: { ...event, id: id }, selectedDay };
-        //dispatch({ type: ADD_EVENT, payload });
         getData(selectedDay).then((dataList) => {
           dispatch({ type: ADD_EVENT, payload: { selectedDay, dataList } });
         });
@@ -80,9 +78,6 @@ export function removeEvent(selectedDay, id) {
           type: DEL_EVENT,
           payload: { id: id, selectedDay: selectedDay },
         });
-        /* getData(selectedDay).then((dataList) => {
-          dispatch({ type: DEL_EVENT, payload: { selectedDay, dataList } });
-        }); */
       });
     } catch {
       console.error('bd remove errror');
