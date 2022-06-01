@@ -45,7 +45,6 @@ export async function addData(selectedDay, item) {
 }
 
 export async function delData(selectedDay, id) {
-  console.log('delData');
   const docRef = await deleteDoc(doc(db, 'Nikita', 'week', selectedDay, id));
   return id;
 }
